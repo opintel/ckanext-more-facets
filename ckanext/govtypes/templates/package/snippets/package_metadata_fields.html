@@ -1,0 +1,25 @@
+{% ckan_extends %}
+
+{# Remove 'free extras' from the package form. If you're using
+convert_to/from_extras() as we are with our 'custom_text' field below then
+you need to remove free extras from the form, or editing your custom field
+won't work. #}
+{% block custom_fields %}
+{% endblock %}
+
+{% block package_metadata_fields %}
+
+  <div class="control-group">
+    <label class="control-label" for="field-gov_type">{{ _("Nivel de Gobierno") }}</label>
+    <div class="controls">
+      <select id="field-gov_type" name="gov_type" data-module="autocomplete">
+        {% for gov_type in h.gov_types()  %}
+          <option value="{{ gov_type }}" {% if gov_type in data.get('gov_type', []) %}selected="selected"{% endif %}>{{ gov_type }}</option>
+        {% endfor %}
+      </select>
+    </div>
+  </div>
+
+  {{ super() }}
+
+{% endblock %}

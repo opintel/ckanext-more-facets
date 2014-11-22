@@ -1,0 +1,13 @@
+{% ckan_extends %}
+
+{% block package_description %}
+  {{ super() }}
+
+  {# Add our custom gov_type field to the dataset read page. #}
+  {% if pkg.get('gov_type') %}
+    <section id="dataset-gov_type" class="resources module-content">
+    <p><strong>Nivel de Gobierno</strong>: {{ pkg.gov_type[0] }}</p>
+    </section>
+  {% endif %}
+
+{% endblock %}
