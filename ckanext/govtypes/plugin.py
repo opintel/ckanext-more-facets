@@ -17,7 +17,7 @@ def create_gov_types():
         logging.info("Creating vocab 'gov_types'")
         data = {'name': 'gov_types'}
         vocab = tk.get_action('vocabulary_create')(context, data)
-        for tag in (u'Federal', u'Estatal', u'Municipal', u'Autónomo'):
+        for tag in (u'Federal', u'Estatal', u'Municipal', u'Autonomo'):
             logging.info(
                     "Adding tag {0} to vocab 'gov_types'".format(tag))
             data = {'name': tag, 'vocabulary_id': vocab['id']}
