@@ -201,13 +201,11 @@ class GovLevelVocabPlugin(plugins.SingletonPlugin, tk.DefaultDatasetForm):
         ##facets_dict['vocab_gov_types'] = 'Nivel de Gobierno'
         gov_facets = facets_dict
         facets_dict = collections.OrderedDict()
+        facets_dict['theme'] = tk._('Categorias')
         facets_dict['vocab_gov_types'] = tk._('Nivel de Gobierno')
         for key in gov_facets.keys():
             facets_dict[key] = gov_facets[key]
-        return facets_dict
-        facets_dict.update({
-                'vocab_gov_types': tk._('Nivel de Gobierno'),
-                })
+
         return facets_dict
 
     def group_facets(self, facets_dict, group_type, package_type):

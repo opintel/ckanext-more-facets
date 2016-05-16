@@ -1,24 +1,22 @@
 {% ckan_extends %}
 
-{% block form %}
-  {% set facets = {
-    'fields': c.fields_grouped,
-    'search': c.search_facets,
-    'titles': c.facet_titles,
-    'translated_fields': c.translated_fields,
-    'remove_field': c.remove_field }
-  %}
-  {% set sorting = [
-    (_('Relevance'), 'score desc, metadata_modified desc'),
-    (_('Name Ascending'), 'title_string asc'),
-    (_('Name Descending'), 'title_string desc'),
-    (_('Last Modified'), 'metadata_modified desc'),
-    (_('Popular'), 'views_recent desc') if g.tracking_enabled else (false, false) ]
-  %}
-  {% snippet 'snippets/search_form.html', type='dataset', query=c.q, sorting=sorting, sorting_selected=c.sort_by_selected, count=c.page.item_count, facets=facets, show_empty=request.params, error=c.query_error %}
-{% endblock %}
-
 {% block secondary_content %}
-   {# snippet 'snippets/gov_level.html' #}
-   {{ super() }}
+    
+    <div class="filters">
+    <div>
+      <section class="module module-narrow categoria">
+        <h2 class="module-heading">{{ _('Categoria') }}</h2>
+        <ul class="nav nav-simple">
+        {% for tag in ['Salud', 'Geoespacial', 'Seguridad y Justicia', 'Energia y Medio Ambiente', 'Educacion', 'Economia', 'Cultura y Turismo', 'Finanzas y contrataciones', 'Infraestructura', 'Desarrollo Sostenible', 'Gobiernos Locales'] %}
+          <li class="nav-item"><a href="/dataset?theme={{tag}}">{{tag}}</a></li>
+        {% endfor %}
+        </ul>
+      </section>
+      {% for facet in c.facet_titles %}
+        {{ h.snippet('snippets/facet_list.html', title=c.facet_titles[facet], name=facet) }}
+      {% endfor %}
+    </div>
+    <a class="close no-text hide-filters"><i class="icon-remove-sign"></i><span class="text">close</span></a>
+  </div>
+
 {% endblock %}
