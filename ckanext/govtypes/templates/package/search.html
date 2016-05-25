@@ -4,6 +4,7 @@
     
     <div class="filters">
     <div>
+      {#
       <section class="module module-narrow categoria">
         <h2 class="module-heading">{{ _('Categoria') }}</h2>
         <ul class="nav nav-simple">
@@ -12,6 +13,7 @@
         {% endfor %}
         </ul>
       </section>
+      #}
       {% for facet in c.facet_titles %}
         {{ h.snippet('snippets/facet_list.html', title=c.facet_titles[facet], name=facet) }}
       {% endfor %}
