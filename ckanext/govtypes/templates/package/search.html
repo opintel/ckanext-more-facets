@@ -3,22 +3,22 @@
 {% block secondary_content %}
     
     <div class="filters">
-    <div>
-      {#
-      <section class="module module-narrow categoria">
-        <h2 class="module-heading">{{ _('Categoria') }}</h2>
-        <ul class="nav nav-simple">
-        {% for tag in ['Salud', 'Geoespacial', 'Seguridad y Justicia', 'Energia y Medio Ambiente', 'Educacion', 'Economia', 'Cultura y Turismo', 'Finanzas y contrataciones', 'Infraestructura', 'Desarrollo Sostenible', 'Gobiernos Locales'] %}
-          <li class="nav-item"><a href="/dataset?theme={{tag}}">{{tag}}</a></li>
+      <div>
+        {#
+        <section class="module module-narrow categoria">
+          <h2 class="module-heading">{{ _('Categoria') }}</h2>
+          <ul class="nav nav-simple">
+          {% for tag in ['Salud', 'Geoespacial', 'Seguridad y Justicia', 'Energia y Medio Ambiente', 'Educacion', 'Economia', 'Cultura y Turismo', 'Finanzas y contrataciones', 'Infraestructura', 'Desarrollo Sostenible', 'Gobiernos Locales'] %}
+            <li class="nav-item"><a href="/dataset?theme={{tag}}">{{tag}}</a></li>
+          {% endfor %}
+          </ul>
+        </section>
+        #}
+        {% for facet in c.facet_titles %}
+          {{ h.snippet('snippets/facet_list.html', title=c.facet_titles[facet], name=facet) }}
         {% endfor %}
-        </ul>
-      </section>
-      #}
-      {% for facet in c.facet_titles %}
-        {{ h.snippet('snippets/facet_list.html', title=c.facet_titles[facet], name=facet) }}
-      {% endfor %}
-    </div>
-    <a class="close no-text hide-filters"><i class="icon-remove-sign"></i><span class="text">close</span></a>
+      </div>
+      <a class="close no-text hide-filters"><i class="icon-remove-sign"></i><span class="text">close</span></a>
   </div>
 
 {% endblock %}
